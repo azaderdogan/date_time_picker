@@ -165,10 +165,10 @@ class DateTimePicker extends FormField<String> {
     this.use24HourFormat = true,
     this.timeFieldWidth,
     this.timePickerEntryModeInput = false,
+    this.keyboardType = TextInputType.datetime,
     String? initialValue,
     FocusNode? focusNode,
     InputDecoration? decoration,
-    //TextInputType keyboardType,
     TextCapitalization textCapitalization = TextCapitalization.none,
     TextInputAction? textInputAction,
     TextStyle? style,
@@ -297,7 +297,7 @@ class DateTimePicker extends FormField<String> {
                   errorText: field.errorText,
                 ),
                 focusNode: focusNode,
-                keyboardType: TextInputType.datetime,
+                keyboardType: keyboardType,
                 textInputAction: textInputAction,
                 style: style,
                 strutStyle: strutStyle,
@@ -506,6 +506,8 @@ class DateTimePicker extends FormField<String> {
   final double? timeFieldWidth;
 
   final bool timePickerEntryModeInput;
+
+  final TextInputType? keyboardType;
 
   final ValueChanged<String>? onChanged;
 
@@ -717,7 +719,7 @@ class _DateTimePickerState extends FormFieldState<String> {
       initialEntryMode: widget.initialEntryMode ?? DatePickerEntryMode.calendar,
       selectableDayPredicate: widget.selectableDayPredicate,
       fieldLabelText: widget.fieldLabelText,
-      fieldHintText: widget.fieldHintText,
+      fieldHintText: widget.fieldHintText, keyboardType: widget.keyboardType,
       errorFormatText: widget.errorFormatText,
       errorInvalidText: widget.errorInvalidText,
       //textDirection: widget.textDirection,
@@ -827,7 +829,7 @@ class _DateTimePickerState extends FormFieldState<String> {
       firstDate: widget.firstDate ?? DateTime.now(),
       lastDate: widget.lastDate ?? DateTime.now(),
       helpText: widget.calendarTitle,
-      cancelText: widget.cancelText,
+      cancelText: widget.cancelText, keyboardType: widget.keyboardType,
       confirmText: widget.confirmText,
       initialDatePickerMode: widget.initialDatePickerMode ?? DatePickerMode.day,
       initialEntryMode: widget.initialEntryMode ?? DatePickerEntryMode.calendar,
